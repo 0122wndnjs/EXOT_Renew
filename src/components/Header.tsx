@@ -1,0 +1,197 @@
+import { useState, useEffect } from "react";
+import { animate, motion, AnimatePresence } from "framer-motion";
+import { FiMenu, FiX } from "react-icons/fi";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaTelegramPlane } from "react-icons/fa";
+
+const Header = () => {
+  const [activeSection, setActiveSection] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const sections = [
+    { id: "intro", label: "Intro" },
+    { id: "what-is-exot", label: "What is EXOT" },
+    { id: "ecosystem", label: "Ecosystem & Biz" },
+    { id: "governance", label: "Governance & CA" },
+    { id: "exosome-market", label: "Exosome Market" },
+    { id: "token", label: "Token" },
+    { id: "team", label: "Team & Partner" },
+    { id: "roadmap", label: "Roadmap" },
+  ];
+
+  // ✅ Scroll Spy (requestAnimationFrame으로 성능 개선)
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          let current = "";
+          sections.forEach((section) => {
+            const el = document.getElementById(section.id);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              if (rect.top <= 150 && rect.bottom >= 150) {
+                current = section.id;
+              }
+            }
+          });
+          setActiveSection(current);
+          setScrolled(window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // ✅ Smooth Scroll
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const targetY = element.getBoundingClientRect().top + window.scrollY - 60;
+    const controls = animate(window.scrollY, targetY, {
+      duration: 0.8,
+      ease: "easeInOut",
+      onUpdate: (value) => window.scrollTo(0, value),
+    });
+
+    setMenuOpen(false);
+    return () => controls.stop();
+  };
+
+  return (
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md ${
+        scrolled ? "bg-black/70" : "bg-transparent"
+      }`}
+    >
+      <div className="w-full md:max-w-[75%] mx-auto px-6 py-5 md:px-0 flex items-center justify-between">
+        {/* ===== 로고 ===== */}
+        <button
+          onClick={() => scrollToSection("intro")}
+          className="flex items-center focus:outline-none"
+          aria-label="Go to Intro section"
+        >
+          <img
+            src="/exot_logo.webp"
+            alt="EXOT Logo"
+            className="h-12 w-auto object-contain"
+          />
+        </button>
+
+        {/* ===== 네비게이션 (데스크탑) ===== */}
+        <nav
+          className="hidden md:flex space-x-8 justify-center mx-auto"
+          aria-label="Main Navigation"
+        >
+          {sections.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => scrollToSection(section.id)}
+              className={`text-base md:text-lg transition-all duration-300 pb-1 border-b-2 ${
+                activeSection === section.id
+                  ? "text-yellow-300 border-yellow-300"
+                  : "text-gray-200 border-transparent hover:text-yellow-200"
+              }`}
+            >
+              {section.label}
+            </button>
+          ))}
+        </nav>
+
+        {/* ===== 데스크탑용 SNS 아이콘 ===== */}
+        <div className="hidden md:flex space-x-6">
+          <a
+            href={import.meta.env.VITE_TWITTER_URL || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-gray-400 transition-all"
+            aria-label="Twitter"
+          >
+            <FaXTwitter size={22} />
+          </a>
+          <a
+            href={import.meta.env.VITE_TELEGRAM_URL || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-gray-400 transition-all"
+            aria-label="Telegram"
+          >
+            <FaTelegramPlane size={22} />
+          </a>
+        </div>
+
+        {/* ===== 모바일 햄버거 버튼 ===== */}
+        <button
+          onClick={() => setMenuOpen((prev) => !prev)}
+          className="md:hidden text-3xl text-white ml-auto focus:outline-none"
+          aria-label="Toggle mobile menu"
+        >
+          {menuOpen ? <FiX /> : <FiMenu />}
+        </button>
+      </div>
+
+      {/* ===== 모바일 메뉴 (애니메이션 적용) ===== */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden bg-black/90 backdrop-blur-md border-t border-white/20"
+          >
+            <nav
+              className="flex flex-col items-center py-4 space-y-4"
+              aria-label="Mobile Navigation"
+            >
+              {sections.map((section) => (
+                <button
+                  key={section.id}
+                  onClick={() => scrollToSection(section.id)}
+                  className={`text-lg transition-all duration-300 ${
+                    activeSection === section.id
+                      ? "text-yellow-300"
+                      : "text-gray-200 hover:text-yellow-200"
+                  }`}
+                >
+                  {section.label}
+                </button>
+              ))}
+
+              {/* ===== 모바일용 SNS 아이콘 ===== */}
+              <div className="flex justify-center space-x-6 pt-4 border-t border-white/10 mt-4">
+                <a
+                  href={import.meta.env.VITE_TWITTER_URL || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-gray-400 transition-all"
+                  aria-label="Twitter"
+                >
+                  <FaXTwitter size={22} />
+                </a>
+                <a
+                  href={import.meta.env.VITE_TELEGRAM_URL || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-gray-400 transition-all"
+                  aria-label="Telegram"
+                >
+                  <FaTelegramPlane size={22} />
+                </a>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
+
+export default Header;
