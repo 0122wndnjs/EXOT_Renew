@@ -8,13 +8,13 @@ html {
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Tomorrow", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: #000000;
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -35,7 +35,6 @@ body {
   overflow-x: hidden;
 }
 
-
 #root {
   width: 100%;
   min-height: 100vh;
@@ -50,4 +49,17 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+
+.perspective {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
 }

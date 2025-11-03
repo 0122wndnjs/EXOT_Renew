@@ -12,9 +12,8 @@ const Header = () => {
   const sections = [
     { id: "intro", label: "Intro" },
     { id: "what-is-exot", label: "What is EXOT" },
-    { id: "ecosystem", label: "Ecosystem & Biz" },
-    { id: "governance", label: "Governance & CA" },
-    { id: "exosome-market", label: "Exosome Market" },
+    { id: "ecosystem", label: "Ecosystem" },
+    { id: "exosome", label: "Exosome" },
     { id: "token", label: "Token" },
     { id: "team", label: "Team & Partner" },
     { id: "roadmap", label: "Roadmap" },
