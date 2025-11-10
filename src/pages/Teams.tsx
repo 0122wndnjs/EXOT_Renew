@@ -4,58 +4,67 @@ import { FaLinkedin } from "react-icons/fa";
 const Teams = () => {
   const teamMembers = [
     {
+      name: "Hakan K",
+      role: "CEO",
+      image: "/images/team/hakan.jpg",
+      linkedin: "https://www.linkedin.com/in/hakan-kim-066999396/",
+    },
+    {
       name: "Toni Hyun",
       role: "COO",
       image: "/images/team/Toni.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      linkedin:
+        "https://www.linkedin.com/in/toni-h-bb1718390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Ethan Cole",
       role: "CTO",
       image: "/images/team/Ethan.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      linkedin:
+        "https://www.linkedin.com/in/ethan-cole-927802394?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Aisha Rahman",
       role: "Head of Bio Research Integration",
-      image: "/images/team/Aisha.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      image: "/images/team/aisha.jpeg",
+      linkedin: "https://www.linkedin.com/in/aisha-rahman-0887b4394",
     },
     {
       name: "David Liu",
       role: "Lead Smart Contract Engineer",
       image: "/images/team/David.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      linkedin: "https://www.linkedin.com/in/aisha-rahman-0887b4394",
     },
     {
       name: "Sofia Martins",
       role: "Creative Director",
-      image: "/images/team/Sofia.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      image: "/images/team/sofia.png",
+      linkedin:
+        "https://www.linkedin.com/in/sofia-martins-2767b5394?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Carlos Fernandez",
       role: "Marketing & Community Director",
-      image: "/images/team/Carlos.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      image: "/images/team/carlos.jpeg",
+      linkedin: "https://www.linkedin.com/in/carlos-fernandez-338b74394",
     },
     {
       name: "Nora Kim",
       role: "Product Development Manager",
       image: "/images/team/Nora.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      linkedin: "https://www.linkedin.com/in/nora-kim-323b80394",
     },
     {
       name: "Kenji Ito",
       role: "Partnership & Operations Manager",
-      image: "/images/team/Kenji.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      image: "/images/team/kenji.jpeg",
+      linkedin: "https://www.linkedin.com/in/kenji-lito-567224324",
     },
     {
       name: "Emma Blake",
       role: "Public Relations & Community Manager",
       image: "/images/team/Emma.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      linkedin: "https://it.linkedin.com/in/emma-black-9b8807394",
     },
   ];
 
@@ -64,25 +73,25 @@ const Teams = () => {
       name: "Dr. Aaron Blake",
       role: "Web3 Growth & Tokenomics Expert",
       image: "/images/advisors/Aaron.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      linkedin: "https://www.linkedin.com/in/dr-aaron-blake-762715390",
     },
     {
       name: "Lisa Florentina",
       role: "Strategic Partnership Advisor",
       image: "/images/advisors/Lisa.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      linkedin: "https://www.linkedin.com/in/lisa-florentina-284b66394",
     },
     {
       name: "Michael Rossi",
       role: "Financial & Compliance Advisor",
       image: "/images/advisors/Michael.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      linkedin: "https://www.linkedin.com/in/michael-rossi-72855b390",
     },
     {
       name: "Hana Sato",
       role: "Brand & PR Advisor",
       image: "/images/advisors/Hana.jpg",
-      linkedin: "https://www.linkedin.com/in",
+      linkedin: "https://www.linkedin.com/in/hana-sato-b44962394",
     },
   ];
 

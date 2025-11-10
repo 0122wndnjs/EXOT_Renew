@@ -19,7 +19,7 @@ const Header = () => {
     { id: "roadmap", label: "Roadmap" },
   ];
 
-  // ✅ Scroll Spy (requestAnimationFrame으로 성능 개선)
+  // ✅ Scroll Spy (성능 최적화)
   useEffect(() => {
     let ticking = false;
 
@@ -31,9 +31,7 @@ const Header = () => {
             const el = document.getElementById(section.id);
             if (el) {
               const rect = el.getBoundingClientRect();
-              if (rect.top <= 150 && rect.bottom >= 150) {
-                current = section.id;
-              }
+              if (rect.top <= 150 && rect.bottom >= 150) current = section.id;
             }
           });
           setActiveSection(current);
@@ -48,7 +46,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ Smooth Scroll
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (!element) return;
@@ -67,10 +64,10 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md ${
-        scrolled ? "bg-black/70" : "bg-transparent"
+        scrolled ? "bg-black/30" : "bg-transparent"
       }`}
     >
-      <div className="w-full md:max-w-[75%] mx-auto px-6 py-5 md:px-0 flex items-center justify-between">
+      <div className="w-full xl:max-w-[75%] mx-auto px-6 py-5 xl:px-0 flex items-center justify-between">
         {/* ===== 로고 ===== */}
         <button
           onClick={() => scrollToSection("intro")}
@@ -84,16 +81,18 @@ const Header = () => {
           />
         </button>
 
-        {/* ===== 네비게이션 (데스크탑) ===== */}
+        {/* =========================================================
+            ✅ 데스크탑 메뉴는 xl 이상에서만 보이도록 변경
+        ========================================================== */}
         <nav
-          className="hidden md:flex space-x-8 justify-center mx-auto"
+          className="hidden xl:flex space-x-8 justify-center mx-auto"
           aria-label="Main Navigation"
         >
           {sections.map((section) => (
             <button
               key={section.id}
               onClick={() => scrollToSection(section.id)}
-              className={`text-base md:text-lg transition-all duration-300 pb-1 border-b-2 ${
+              className={`text-base xl:text-lg transition-all duration-300 pb-1 border-b-2 ${
                 activeSection === section.id
                   ? "text-yellow-300 border-yellow-300"
                   : "text-gray-200 border-transparent hover:text-yellow-200"
@@ -104,8 +103,8 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* ===== 데스크탑용 SNS 아이콘 ===== */}
-        <div className="hidden md:flex space-x-6">
+        {/* ✅ 데스크탑 SNS 아이콘도 xl 이상에서만 보여줌 */}
+        <div className="hidden xl:flex space-x-6">
           <a
             href={import.meta.env.VITE_TWITTER_URL || "#"}
             target="_blank"
@@ -126,17 +125,19 @@ const Header = () => {
           </a>
         </div>
 
-        {/* ===== 모바일 햄버거 버튼 ===== */}
+        {/* =========================================================
+            ✅ 모바일/태블릿(md)~중형 화면(lg)~xl 미만 → 햄버거
+        ========================================================== */}
         <button
           onClick={() => setMenuOpen((prev) => !prev)}
-          className="md:hidden text-3xl text-white ml-auto focus:outline-none"
+          className="xl:hidden text-3xl text-white ml-auto focus:outline-none"
           aria-label="Toggle mobile menu"
         >
           {menuOpen ? <FiX /> : <FiMenu />}
         </button>
       </div>
 
-      {/* ===== 모바일 메뉴 (애니메이션 적용) ===== */}
+      {/* ===== 모바일 메뉴 ===== */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -144,12 +145,9 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-black/90 backdrop-blur-md border-t border-white/20"
+            className="xl:hidden bg-black/90 backdrop-blur-md border-t border-white/20"
           >
-            <nav
-              className="flex flex-col items-center py-4 space-y-4"
-              aria-label="Mobile Navigation"
-            >
+            <nav className="flex flex-col items-center py-4 space-y-4">
               {sections.map((section) => (
                 <button
                   key={section.id}
@@ -164,14 +162,12 @@ const Header = () => {
                 </button>
               ))}
 
-              {/* ===== 모바일용 SNS 아이콘 ===== */}
               <div className="flex justify-center space-x-6 pt-4 border-t border-white/10 mt-4">
                 <a
                   href={import.meta.env.VITE_TWITTER_URL || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-gray-400 transition-all"
-                  aria-label="Twitter"
                 >
                   <FaXTwitter size={22} />
                 </a>
@@ -180,7 +176,6 @@ const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-gray-400 transition-all"
-                  aria-label="Telegram"
                 >
                   <FaTelegramPlane size={22} />
                 </a>

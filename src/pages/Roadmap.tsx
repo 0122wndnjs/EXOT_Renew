@@ -35,30 +35,27 @@ const Roadmap = () => {
   ];
 
   return (
-    <section className="relative w-full bg-[#120a00] text-white py-24 px-6 overflow-hidden">
-      {/* 배경 */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1a0f00] via-[#2c1400] to-[#120a00] opacity-90"></div>
+    <section className="relative w-full text-white py-24 px-6 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C1A] via-[#E65C1C] to-[#DC3E1C] opacity-95"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08),_transparent_70%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
-        {/* ===== 좌측 영역 (텍스트) ===== */}
         <div className="md:w-1/3 text-center md:text-left flex flex-col justify-start">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400 drop-shadow-[0_0_25px_rgba(255,150,50,0.3)] mb-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#fff5e0] to-[#ffe2a0] drop-shadow-[0_0_25px_rgba(255,220,120,0.4)] mb-4">
             Roadmap
           </h2>
-          <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6">
+          <p className="text-white/90 text-base md:text-lg leading-relaxed mb-6">
             The EXOT roadmap outlines our phased journey — from foundation to
             full decentralization — combining biotech innovation with blockchain
             transparency.
           </p>
-          <p className="text-yellow-400 text-sm md:text-base italic">
+          <p className="text-yellow-100 text-sm md:text-base italic">
             “Building the decentralized future of biotechnology.”
           </p>
         </div>
 
-        {/* ===== 우측 영역 (타임라인) ===== */}
         <div className="md:w-2/3 relative flex flex-col items-start">
-          {/* 중앙 세로 라인 */}
-          <div className="absolute left-4 md:left-5 top-0 bottom-0 w-[2px] bg-gradient-to-b from-orange-500 to-yellow-400 opacity-40"></div>
+          <div className="absolute left-4 md:left-5 top-0 bottom-0 w-[2px] bg-gradient-to-b from-yellow-300 via-orange-300 to-yellow-100 opacity-60"></div>
 
           <div className="relative flex flex-col gap-16 md:gap-24 w-full">
             {phases.map((phase, i) => (
@@ -70,20 +67,27 @@ const Roadmap = () => {
                 viewport={{ once: true }}
                 className="relative pl-12"
               >
-                {/* ✅ 타임라인 점 (정중앙 완벽 정렬) */}
-                <div
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-5 rounded-full bg-gradient-to-br from-orange-400 to-yellow-300 shadow-[0_0_25px_rgba(255,200,100,0.8)] z-10"
-                ></div>
+                {/* 타임라인 포인트 */}
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-5 rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 z-10"></div>
 
-                {/* 카드 */}
-                <div className="bg-[#1f1200]/90 border border-orange-400/30 rounded-2xl p-6 md:p-8 shadow-[0_0_30px_rgba(255,160,60,0.15)] hover:shadow-[0_0_40px_rgba(255,180,80,0.3)] transition-all duration-500">
-                  <h3 className="text-lg md:text-xl font-bold text-orange-300 mb-1">
+                {/* ✅ 노란 계열 카드 */}
+                <div className="
+                  bg-gradient-to-br from-[#FFF4C2]/80 via-[#FFE08A]/70 to-[#FFCA61]/70
+                  backdrop-blur-sm 
+                  border border-yellow-300/30 
+                  rounded-2xl 
+                  p-6 md:p-8 
+                  shadow-[0_0_25px_rgba(255,220,150,0.25)]
+                  hover:shadow-[0_0_45px_rgba(255,230,160,0.55)]
+                  transition-all duration-500
+                ">
+                  <h3 className="text-lg md:text-xl font-bold text-[#7a3b00] mb-1">
                     {phase.title}
                   </h3>
-                  <h4 className="text-base md:text-lg text-yellow-400 font-semibold mb-3">
+                  <h4 className="text-base md:text-lg text-[#8a4a00] font-semibold mb-3">
                     {phase.subtitle}
                   </h4>
-                  <p className="text-white/80 text-sm md:text-base leading-relaxed">
+                  <p className="text-[#4a2a00] text-sm md:text-base leading-relaxed">
                     {phase.description}
                   </p>
                 </div>

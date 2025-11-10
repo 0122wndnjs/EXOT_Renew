@@ -17,7 +17,8 @@ const Subscribe = () => {
             Get the latest updates from the Bio ecosystem
           </h2>
           <p className="text-white/70 mt-3 text-base md:text-lg">
-            Subscribe to receive exclusive news, project insights, and announcements.
+            Subscribe to receive exclusive news, project insights, and
+            announcements.
           </p>
         </div>
 

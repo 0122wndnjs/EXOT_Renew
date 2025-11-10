@@ -10,6 +10,8 @@ import Teams from './pages/Teams';
 import Roadmap from './pages/Roadmap';
 import Token from './pages/Token';
 import Exosome from './pages/Exosome';
+import Community from './pages/Community';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -46,8 +48,9 @@ function App() {
       <section id="roadmap">
         <Roadmap />
       </section>
+      <Community />
     </main>
-
+    <Footer />
    </div>
   )
 }
