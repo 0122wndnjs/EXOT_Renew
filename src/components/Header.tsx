@@ -1,65 +1,65 @@
 import { useState, useEffect } from "react";
-import { animate, motion, AnimatePresence } from "framer-motion";
-import { FiMenu, FiX } from "react-icons/fi";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { motion, AnimatePresence, animate } from "framer-motion";
+import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
-import { FaTelegramPlane } from "react-icons/fa";
+import { SiLinktree } from "react-icons/si";
 
 const Header = () => {
-  const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [tokenDropdown, setTokenDropdown] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const sections = [
-    { id: "intro", label: "Intro" },
-    { id: "what-is-exot", label: "What is EXOT" },
-    { id: "ecosystem", label: "Ecosystem" },
-    { id: "exosome", label: "Exosome" },
-    { id: "token", label: "Token" },
-    { id: "team", label: "Team & Partner" },
-    { id: "roadmap", label: "Roadmap" },
-  ];
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // ✅ Scroll Spy (성능 최적화)
+  /** ✅ 스크롤 이벤트 */
   useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          let current = "";
-          sections.forEach((section) => {
-            const el = document.getElementById(section.id);
-            if (el) {
-              const rect = el.getBoundingClientRect();
-              if (rect.top <= 150 && rect.bottom >= 150) current = section.id;
-            }
-          });
-          setActiveSection(current);
-          setScrolled(window.scrollY > 10);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /** ✅ 메인 페이지 스크롤 이동 */
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (!element) return;
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const targetY = el.getBoundingClientRect().top + window.scrollY - 60;
+        window.scrollTo({ top: targetY, behavior: "smooth" });
+      }, 50);
+      return;
+    }
 
-    const targetY = element.getBoundingClientRect().top + window.scrollY - 60;
-    const controls = animate(window.scrollY, targetY, {
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    const targetY =
+      section.getBoundingClientRect().top + window.scrollY - 60;
+
+    animate(window.scrollY, targetY, {
       duration: 0.8,
       ease: "easeInOut",
       onUpdate: (value) => window.scrollTo(0, value),
     });
 
     setMenuOpen(false);
-    return () => controls.stop();
   };
+
+  /** ✅ EXOT Token 드롭다운 데이터 */
+  const exotTokenMenu = [
+    { label: "Intro", id: "intro" },
+    { label: "What is EXOT", id: "what-is-exot" },
+    { label: "Ecosystem", id: "ecosystem" },
+    { label: "Exosome", id: "exosome" },
+    { label: "Token", id: "token" },
+    { label: "Team & Partner", id: "team" },
+    { label: "Roadmap", id: "roadmap" },
+  ];
+
+  const isActiveRoute = (path: string) => location.pathname === path;
 
   return (
     <header
@@ -68,118 +68,207 @@ const Header = () => {
       }`}
     >
       <div className="w-full xl:max-w-[75%] mx-auto px-6 py-5 xl:px-0 flex items-center justify-between">
-        {/* ===== 로고 ===== */}
+        
+        {/* ✅ 로고 */}
         <button
           onClick={() => scrollToSection("intro")}
-          className="flex items-center focus:outline-none"
-          aria-label="Go to Intro section"
+          className="flex items-center"
         >
-          <img
-            src="/exot_logo.webp"
-            alt="EXOT Logo"
-            className="h-12 w-auto object-contain"
-          />
+          <img src="/exot_logo.webp" className="h-12" />
         </button>
 
-        {/* =========================================================
-            ✅ 데스크탑 메뉴는 xl 이상에서만 보이도록 변경
-        ========================================================== */}
-        <nav
-          className="hidden xl:flex space-x-8 justify-center mx-auto"
-          aria-label="Main Navigation"
-        >
-          {sections.map((section) => (
+        {/* ✅ Desktop Navigation */}
+        <nav className="hidden xl:flex items-center space-x-8">
+
+          {/* ✅ EXOT Token — Hover Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setTokenDropdown(true)}
+            onMouseLeave={() => setTokenDropdown(false)}
+          >
             <button
-              key={section.id}
-              onClick={() => scrollToSection(section.id)}
-              className={`text-base xl:text-lg transition-all duration-300 pb-1 border-b-2 ${
-                activeSection === section.id
-                  ? "text-yellow-300 border-yellow-300"
-                  : "text-gray-200 border-transparent hover:text-yellow-200"
+              className={`flex items-center space-x-1 transition ${
+                location.pathname === "/" ? "text-yellow-300" : "text-white"
               }`}
             >
-              {section.label}
+              <span>EXOT Token</span>
+              <FiChevronDown />
             </button>
-          ))}
+
+            <AnimatePresence>
+              {tokenDropdown && (
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 5 }}
+                  className="absolute mt-3 w-48 bg-black/90 border border-white/10 rounded-xl shadow-xl backdrop-blur-lg"
+                >
+                  {exotTokenMenu.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="block w-full text-left px-4 py-3 text-gray-200 hover:bg-white/10 hover:text-yellow-300 transition"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* ✅ Other Menu Items */}
+          <Link
+            to="/dao"
+            className={`transition ${
+              isActiveRoute("/dao") ? "text-yellow-300" : "text-white"
+            }`}
+          >
+            EXOT DAO
+          </Link>
+
+          <Link
+            to="/staking"
+            className={`transition ${
+              isActiveRoute("/staking") ? "text-yellow-300" : "text-white"
+            }`}
+          >
+            EXOT Staking
+          </Link>
+
+          <Link
+            to="/onboarding"
+            className={`transition ${
+              isActiveRoute("/onboarding") ? "text-yellow-300" : "text-white"
+            }`}
+          >
+            Onboarding
+          </Link>
+
+          <a
+            href="https://exot.gitbook.io/exot-whitepaper"
+            target="_blank"
+            className="text-white hover:text-yellow-200"
+          >
+            Docs
+          </a>
+
+          <Link
+            to="/get-exot"
+            className={`transition ${
+              isActiveRoute("/get-exot") ? "text-yellow-300" : "text-white"
+            }`}
+          >
+            Get EXOT
+          </Link>
+
+          <a
+            href="https://medium.com/@exotproject"
+            target="_blank"
+            className="text-white hover:text-yellow-200"
+          >
+            Medium
+          </a>
         </nav>
 
-        {/* ✅ 데스크탑 SNS 아이콘도 xl 이상에서만 보여줌 */}
-        <div className="hidden xl:flex space-x-6">
-          <a
-            href={import.meta.env.VITE_TWITTER_URL || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-gray-400 transition-all"
-            aria-label="Twitter"
-          >
-            <FaXTwitter size={22} />
+        {/* ✅ Desktop SNS */}
+        <div className="hidden xl:flex space-x-5">
+          <a href="https://linktr.ee/EXOTPROJECT" target="_blank" className="text-white hover:text-green-300">
+            <SiLinktree size={22} />
           </a>
-          <a
-            href={import.meta.env.VITE_TELEGRAM_URL || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-gray-400 transition-all"
-            aria-label="Telegram"
-          >
-            <FaTelegramPlane size={22} />
+          <a href="https://x.com/ExotProject" target="_blank" className="text-white hover:text-gray-400">
+            <FaXTwitter size={22} />
           </a>
         </div>
 
-        {/* =========================================================
-            ✅ 모바일/태블릿(md)~중형 화면(lg)~xl 미만 → 햄버거
-        ========================================================== */}
+        {/* ✅ Mobile Toggle */}
         <button
-          onClick={() => setMenuOpen((prev) => !prev)}
-          className="xl:hidden text-3xl text-white ml-auto focus:outline-none"
-          aria-label="Toggle mobile menu"
+          className="xl:hidden text-3xl text-white"
+          onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <FiX /> : <FiMenu />}
         </button>
       </div>
 
-      {/* ===== 모바일 메뉴 ===== */}
+      {/* ✅ Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="xl:hidden bg-black/90 backdrop-blur-md border-t border-white/20"
+            className="xl:hidden bg-black/90 border-t border-white/10"
           >
-            <nav className="flex flex-col items-center py-4 space-y-4">
-              {sections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => scrollToSection(section.id)}
-                  className={`text-lg transition-all duration-300 ${
-                    activeSection === section.id
-                      ? "text-yellow-300"
-                      : "text-gray-200 hover:text-yellow-200"
-                  }`}
-                >
-                  {section.label}
-                </button>
-              ))}
+            <nav className="flex flex-col py-5">
 
-              <div className="flex justify-center space-x-6 pt-4 border-t border-white/10 mt-4">
-                <a
-                  href={import.meta.env.VITE_TWITTER_URL || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-gray-400 transition-all"
-                >
+              {/* ✅ EXOT Token Dropdown (Click on Mobile) */}
+              <button
+                onClick={() => setTokenDropdown(!tokenDropdown)}
+                className="flex items-center justify-between px-6 py-3 text-white border-b border-white/10"
+              >
+                EXOT Token
+                <FiChevronDown />
+              </button>
+
+              <AnimatePresence>
+                {tokenDropdown && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    className="mt-2 px-6"
+                  >
+                    {exotTokenMenu.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          scrollToSection(item.id);
+                          setMenuOpen(false);
+                        }}
+                        className="block w-full text-left py-2 text-gray-300 hover:text-yellow-300"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* ✅ Single Links */}
+              <Link to="/dao" onClick={() => setMenuOpen(false)} className="px-6 py-3 text-white border-b border-white/10 hover:text-yellow-200">
+                EXOT DAO
+              </Link>
+
+              <Link to="/staking" onClick={() => setMenuOpen(false)} className="px-6 py-3 text-white border-b border-white/10 hover:text-yellow-200">
+                EXOT Staking
+              </Link>
+
+              <Link to="/onboarding" onClick={() => setMenuOpen(false)} className="px-6 py-3 text-white border-b border-white/10 hover:text-yellow-200">
+                Onboarding EXOT
+              </Link>
+
+              <Link to="/get-exot" onClick={() => setMenuOpen(false)} className="px-6 py-3 text-white border-b border-white/10 hover:text-yellow-200">
+                Get EXOT
+              </Link>
+
+              <a href="https://linktr.ee/EXOTPROJECT" target="_blank" className="px-6 py-3 text-white hover:text-yellow-200">
+                Docs
+              </a>
+
+              <a href="https://medium.com/@exotproject" target="_blank" className="px-6 py-3 text-white hover:text-yellow-200">
+                Medium
+              </a>
+
+              {/* ✅ SNS */}
+              <div className="flex justify-center space-x-6 py-4 border-t border-white/10 mt-4">
+                <a href="https://linktr.ee/EXOTPROJECT" target="_blank" className="text-white hover:text-green-300">
+                  <SiLinktree size={22} />
+                </a>
+                <a href="https://x.com/ExotProject" target="_blank" className="text-white hover:text-gray-300">
                   <FaXTwitter size={22} />
                 </a>
-                <a
-                  href={import.meta.env.VITE_TELEGRAM_URL || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-gray-400 transition-all"
-                >
-                  <FaTelegramPlane size={22} />
-                </a>
               </div>
+
             </nav>
           </motion.div>
         )}

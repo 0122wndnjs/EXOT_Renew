@@ -1,15 +1,10 @@
 import { motion } from "framer-motion";
-import {
-  FaFileAlt,
-  FaTelegramPlane,
-  FaDiscord,
-  FaMedium,
-} from "react-icons/fa";
+import { FaTelegramPlane, FaDiscord, FaMedium } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { SiLinktree } from "react-icons/si";
 
 const Community = () => {
-  const whitepaperUrl = "https://exot.gitbook.io/exot-whitepaper";
-
+  const linktreeUrl = "https://linktr.ee/EXOTPROJECT";
   const telegramCommunityUrl = "https://t.me/+zWZ6ePklw8E4M2M1";
   const telegramAnnouncementUrl = "https://t.me/+46EeoseO6zxkMjg1";
 
@@ -58,9 +53,8 @@ const Community = () => {
           </p>
         </div>
 
-        {/* ✅ Whitepaper */}
         <motion.a
-          href={whitepaperUrl}
+          href={linktreeUrl}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, y: 40 }}
@@ -71,19 +65,19 @@ const Community = () => {
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-10 p-14">
             <motion.div
-              whileHover={{ rotate: 8, scale: 1.1 }}
+              whileHover={{ rotate: 6, scale: 1.05 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="flex items-center justify-center w-24 h-24 rounded-2xl bg-gradient-to-br from-orange-400 to-yellow-400 text-black shadow-[0_0_35px_rgba(255,200,100,0.5)]"
+              className="flex items-center justify-center w-24 h-24 rounded-2xl bg-[#7ED957] border border-[#6CC84E]"
             >
-              <FaFileAlt className="text-5xl" />
+              <SiLinktree className="text-5xl text-black" />
             </motion.div>
 
             <div className="flex-1 text-center md:text-left">
               <h3 className="text-3xl md:text-4xl font-bold text-orange-300">
-                Read the Whitepaper
+                Explore EXOT Links
               </h3>
               <p className="mt-3 text-white/80 text-lg">
-                Discover EXOT’s vision, tokenomics, and roadmap.
+                Access whitepaper, socials, documents and more through Linktree.
               </p>
             </div>
 
@@ -93,7 +87,9 @@ const Community = () => {
                 scale: 1.08,
               }}
               transition={{ duration: 0.4 }}
-              className="inline-block px-8 py-4 rounded-full font-semibold text-black bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-400 bg-[length:200%_auto] text-lg transition-all"
+              className="inline-block px-8 py-4 rounded-full font-semibold text-black 
+                 bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-400 
+                 bg-[length:200%_auto] text-lg transition-all"
             >
               Open →
             </motion.span>
@@ -170,7 +166,6 @@ const Community = () => {
           </motion.div>
         </div>
 
-        {/* ✅ Remaining 4 cards */}
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
           {links.map((item, i) => (
             <motion.a

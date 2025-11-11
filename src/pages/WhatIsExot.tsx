@@ -26,8 +26,7 @@ const WhatIsExot = () => {
         <FiCheckCircle className="text-orange-400 text-5xl drop-shadow-[0_0_12px_rgba(255,200,100,0.4)]" />
       ),
       step: "Final Decision",
-      activity:
-        "On-chain governance voting based on the due diligence report",
+      activity: "On-chain governance voting based on the due diligence report",
       entity: "EXOT Token Holders (DAO Community)",
     },
     {
@@ -45,9 +44,7 @@ const WhatIsExot = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C1A] via-[#E65C1C] to-[#DC3E1C]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08),_transparent_70%)]" />
 
-      {/* ✅ lg 기준으로 2단 레이아웃 */}
       <div className="relative w-full lg:max-w-[75%] mx-auto flex flex-col lg:flex-row items-start justify-between gap-16 lg:gap-20 z-10">
-
         {/* ===== 왼쪽: MISSION ===== */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -74,7 +71,6 @@ const WhatIsExot = () => {
           viewport={{ once: true }}
           className="flex-1 lg:w-1/2 flex flex-col items-center gap-10 w-full max-w-2xl"
         >
-          {/* 영상 */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,10 +79,13 @@ const WhatIsExot = () => {
             className="w-full aspect-video bg-black/40 rounded-2xl overflow-hidden border border-yellow-300/30 shadow-[0_0_25px_rgba(255,200,120,0.2)]"
           >
             <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              src="https://www.youtube-nocookie.com/embed/_Jg6AVNqh1U?rel=0"
               title="EXOT Introduction"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
               className="w-full h-full"
+              loading="lazy"
             />
           </motion.div>
 
@@ -145,7 +144,6 @@ const WhatIsExot = () => {
                     {item.entity}
                   </p>
                 </div>
-
               </motion.div>
             ))}
           </div>

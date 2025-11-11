@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 const Token = () => {
   const data = [
@@ -19,6 +20,24 @@ const Token = () => {
   const ref = useRef(null);
   const inView = useInView(ref);
   const [count, setCount] = useState(0);
+
+  const contractAddress = "0x598b027c5DA72d7F31534F4f81FDd5bD9D2FFEC4";
+
+  const copyContract = () => {
+    navigator.clipboard.writeText(contractAddress);
+    toast.success("Contract copied!", {
+      style: {
+        background: "#2b1800",
+        color: "#fff3d2",
+        border: "1px solid rgba(255,185,80,0.4)",
+        fontWeight: 600,
+      },
+      iconTheme: {
+        primary: "#ffb347",
+        secondary: "#1f1200",
+      },
+    });
+  };
 
   useEffect(() => {
     if (inView) {
@@ -47,10 +66,9 @@ const Token = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C1A] via-[#E65C1C] to-[#DC3E1C] opacity-95"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08),_transparent_70%)]" />
 
-      {/* ✅ lg 이상에서만 가로 배치 */}
+      {/* 내용 */}
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16">
-        
-        {/* === 왼쪽 정보 === */}
+        {/* === LEFT === */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -58,11 +76,11 @@ const Token = () => {
           viewport={{ once: true }}
           className="flex-1 w-full text-center lg:text-left"
         >
-          <h2 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#fff5e0] to-[#ffe2a0] drop-shadow-[0_0_25px_rgba(255,220,120,0.4)] mb-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#fff5e0] to-[#ffe2a0] mb-6 drop-shadow-[0_0_25px_rgba(255,220,120,0.4)]">
             Token Supply & Distribution
           </h2>
 
-          <div className="space-y-4 text-white/90 text-base md:text-lg mb-8">
+          <div className="space-y-3 text-white/90 text-base md:text-lg mb-8">
             <p>
               <span className="text-yellow-200 font-semibold">Token Name:</span>{" "}
               EXOT Foundation (EXOT)
@@ -71,9 +89,35 @@ const Token = () => {
               <span className="text-yellow-200 font-semibold">Chain:</span>{" "}
               Binance Smart Chain (BSC)
             </p>
+
+            {/* ✅ Contract + Copy */}
+<p className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
+              <span className="text-yellow-200 font-semibold">Contract:</span>
+              <span
+                onClick={copyContract}
+                className="cursor-pointer underline hover:text-yellow-300 transition 
+               break-all text-sm md:text-base leading-relaxed"
+              >
+                {contractAddress}
+              </span>
+            </p>
+
+            <p>
+              <span className="text-yellow-200 font-semibold">
+                Block Explorer:
+              </span>{" "}
+              <a
+                href="https://bscscan.com/token/0x598b027c5DA72d7F31534F4f81FDd5bD9D2FFEC4#balances"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-yellow-300 transition"
+              >
+                View on BscScan
+              </a>
+            </p>
           </div>
 
-          {/* 숫자 카운트 */}
+          {/* ✅ 숫자 애니메이션 */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -88,7 +132,7 @@ const Token = () => {
           </motion.div>
         </motion.div>
 
-        {/* === 오른쪽 파이 차트 === */}
+        {/* === RIGHT === */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -96,7 +140,6 @@ const Token = () => {
           viewport={{ once: true }}
           className="flex-1 flex flex-col items-center w-full"
         >
-          {/* ✅ 반응형 차트 크기 수정 */}
           <motion.div
             initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -139,21 +182,12 @@ const Token = () => {
             </ResponsiveContainer>
           </motion.div>
 
-          {/* ✅ 범례 반응형 개선됨 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="
-              grid 
-              grid-cols-2 
-              sm:grid-cols-2 
-              lg:grid-cols-3 
-              gap-x-8 gap-y-3 
-              mt-8 
-              text-sm text-white/90
-            "
+            className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 mt-8 text-sm text-white/90"
           >
             {data.map((item, i) => (
               <div key={i} className="flex items-center space-x-2">
