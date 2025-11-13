@@ -6,30 +6,34 @@ const BusinessModel = () => {
     {
       title: "Platform Fee",
       desc: "Charged to bio companies upon successful funding",
-      rate: "5–7%",
-      feature: "Competitive with traditional IB fees.",
+      rate: "5–7% of total funding amoun",
+      feature: (
+        <>
+        Competitive with traditional IB fees; <br /> covers deal sourcing, due diligence, and suppor
+        </>
+      )
     },
     {
       title: "Carried Interest",
-      desc: "Charged on returns exceeding the principal",
-      rate: "15–20%",
-      feature: "Core income for DAO Treasury.",
+      desc: "Charged on returns exceeding the principal when portfolio companies exit (Exit)",
+      rate: "15–20% of the excess return",
+      feature: "Lower than traditional VC fees (20–25%), core income source for the DAO Treasury",
     },
     {
       title: "Secondary Trading Fee",
-      desc: "Fee for authorized RWA token trading",
-      rate: "0.1–0.25%",
-      feature: "Provides continuous cash flow.",
+      desc: "Fee for RWA token transactions in authorized secondary exchanges",
+      rate: "0.1–0.25% of the transaction value",
+      feature: "Provides continuous cash flow to the platform",
     },
     {
       title: "Buy-Back",
       desc: "Used for EXOT token buy-back",
-      rate: "10–50%",
-      feature: "Supports long-term value growth.",
+      rate: "10–50% of the excess return",
+      feature: "Supports project stability and long-term growth",
     },
     {
       title: "Data Service",
-      desc: "Sale of anonymized clinical & investment data",
+      desc: "Subscription-based sale of anonymized clinical and investment data",
       rate: "-",
       feature: "Potential long-term revenue stream.",
     },
@@ -95,7 +99,7 @@ const BusinessModel = () => {
               <p className="text-white/80 text-sm mb-2">{rev.desc}</p>
 
               <p className="text-yellow-400 text-sm font-semibold mb-2">
-                Rate: {rev.rate}
+                {rev.rate}
               </p>
 
               <p className="text-white/70 text-xs italic leading-relaxed">

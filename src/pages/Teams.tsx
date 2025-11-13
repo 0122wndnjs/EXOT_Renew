@@ -12,14 +12,14 @@ const Teams = () => {
     {
       name: "Toni Hyun",
       role: "COO",
-      image: "/images/team/Toni.jpg",
+      image: "/images/team/toni.jpg",
       linkedin:
         "https://www.linkedin.com/in/toni-h-bb1718390?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Ethan Cole",
       role: "CTO",
-      image: "/images/team/Ethan.jpg",
+      image: "/images/team/ethan.jpg",
       linkedin:
         "https://www.linkedin.com/in/ethan-cole-927802394?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
@@ -32,7 +32,7 @@ const Teams = () => {
     {
       name: "David Liu",
       role: "Lead Smart Contract Engineer",
-      image: "/images/team/David.jpg",
+      image: "/images/team/david.jpg",
       linkedin: "https://www.linkedin.com/in/aisha-rahman-0887b4394",
     },
     {
@@ -51,7 +51,7 @@ const Teams = () => {
     {
       name: "Nora Kim",
       role: "Product Development Manager",
-      image: "/images/team/Nora.jpg",
+      image: "/images/team/nora.jpg",
       linkedin: "https://www.linkedin.com/in/nora-kim-323b80394",
     },
     {
@@ -63,7 +63,7 @@ const Teams = () => {
     {
       name: "Emma Blake",
       role: "Public Relations & Community Manager",
-      image: "/images/team/Emma.jpg",
+      image: "/images/team/emma.jpg",
       linkedin: "https://it.linkedin.com/in/emma-black-9b8807394",
     },
   ];
@@ -72,25 +72,25 @@ const Teams = () => {
     {
       name: "Dr. Aaron Blake",
       role: "Web3 Growth & Tokenomics Expert",
-      image: "/images/advisors/Aaron.jpg",
+      image: "/images/user.jpg",
       linkedin: "https://www.linkedin.com/in/dr-aaron-blake-762715390",
     },
     {
       name: "Lisa Florentina",
       role: "Strategic Partnership Advisor",
-      image: "/images/advisors/Lisa.jpg",
+      image: "/images/user.jpg",
       linkedin: "https://www.linkedin.com/in/lisa-florentina-284b66394",
     },
     {
       name: "Michael Rossi",
       role: "Financial & Compliance Advisor",
-      image: "/images/advisors/Michael.jpg",
+      image: "/images/user.jpg",
       linkedin: "https://www.linkedin.com/in/michael-rossi-72855b390",
     },
     {
       name: "Hana Sato",
       role: "Brand & PR Advisor",
-      image: "/images/advisors/Hana.jpg",
+      image: "/images/user.jpg",
       linkedin: "https://www.linkedin.com/in/hana-sato-b44962394",
     },
   ];

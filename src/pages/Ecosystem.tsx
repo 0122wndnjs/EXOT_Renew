@@ -10,39 +10,56 @@ import {
 const Ecosystem = () => {
   const participants = [
     {
-      icon: <FiUsers className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />,
+      icon: (
+        <FiUsers className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />
+      ),
       stakeholder: "Bio Company",
       role: "Develop innovative drug technologies, core value creators for the ecosystem.",
       incentive:
-        "Stable capital funding, global feedback & support, and business development assistance via the EXOT network.",
+        "Stable capital funding to overcome the 'Valley of Death', global community feedback and support, business development assistance via the EXOTnetwork",
     },
     {
-      icon: <FiDollarSign className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />,
-      stakeholder: "Investor / RWA Holder",
+      icon: (
+        <FiDollarSign className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />
+      ),
+      stakeholder: (
+        <>
+          Investor / <br /> RWA Holder
+        </>
+      ),
       role: "Supply capital to the platform and share risk/reward from company growth.",
       incentive:
-        "Access to promising early-stage biotech investments, high capital gain potential, flexible liquidity via tokenized equity.",
+        "Investment opportunities in historically inaccessible promising early-stage biotech, high Capital Gain, flexibility in capital withdrawal via liquid tokenized equity",
     },
     {
-      icon: <FiTrendingUp className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />,
-      stakeholder: "EXOT Holder / DAO Member",
-      role: "Stake EXOT tokens and participate in governance.",
+      icon: (
+        <FiTrendingUp className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />
+      ),
+      stakeholder: (
+        <>
+          EXOT Holder / <br /> DAO Member
+        </>
+      ),
+      role: "Hold and stake EXOT tokens, participate in platform governance (e.g., investment selection, fee policy)",
       incentive:
-        "Staking rewards from platform revenue and token appreciation.",
+        "Staking Rewards from platform revenue, potential appreciation of EXOT token value based on long-term ecosystem growth",
     },
     {
-      icon: <FiDatabase className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />,
+      icon: (
+        <FiDatabase className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />
+      ),
       stakeholder: "Scientific Advisory Board (SAB)",
-      role: "Verify technical validity and prepare due diligence reports.",
+      role: "Objectively verify the technical validity of investment candidates based on top-tier scientific expertise, compile due diligence reports",
       incentive:
-        "Professional fees and recognition from successful commercialization.",
+        "Professional Fees for report preparation, prestige and reputation from successful commercialization, (some) success fees in the form of stock options",
     },
     {
-      icon: <FiShield className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />,
+      icon: (
+        <FiShield className="text-yellow-200 text-4xl sm:text-5xl drop-shadow-[0_0_10px_rgba(255,220,100,0.4)]" />
+      ),
       stakeholder: "EXOT Foundation",
-      role: "Ensure protocol operation, partnerships, and DAO transition.",
-      incentive:
-        "Focus on sustainable ecosystem growth.",
+      role: "Support the smooth operation of the ecosystem (initial protocol development, legal/administrative support, partnership building). Role gradually transitions to the DAO.",
+      incentive: "Focus on the sustainable growth and mission attainment of the protocol (Non-profit)",
     },
   ];
 

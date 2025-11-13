@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 const Exosome = () => {
   const areas = [
     {
-      title: "Oncology (Cancer Treatment)",
+      title: (
+        <>
+        Oncology <br /> (Cancer Treatment)
+        </>
+      ),
       weight: "35%",
       desc: "Targeted anti-cancer drug delivery system, significantly reducing side effects and maximizing efficacy compared to chemotherapy.",
     },
@@ -20,7 +24,7 @@ const Exosome = () => {
     {
       title: "Diagnostic Tools",
       weight: "15%",
-      desc: "Liquid Biopsy technology analyzing exosomes for early disease detection and recurrence monitoring.",
+      desc: "Development of Liquid Biopsy technology by analyzing exosomes in blood/bodily fluids for early disease detection and recurrence monitoring",
     },
   ];
 
