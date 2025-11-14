@@ -72,14 +72,14 @@ const Teams = () => {
     {
       name: "Dr. Aaron Blake",
       role: "Web3 Growth & Tokenomics Expert",
-      image: "/images/user.jpg",
-      linkedin: "https://www.linkedin.com/in/dr-aaron-blake-762715390",
+      image: "/images/team/aaron.jpeg",
+      linkedin: "https://www.linkedin.com/in/dr-aaron-blake-a3b410396/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Lisa Florentina",
       role: "Strategic Partnership Advisor",
-      image: "/images/user.jpg",
-      linkedin: "https://www.linkedin.com/in/lisa-florentina-284b66394",
+      image: "/images/team/lisa.jpeg",
+      linkedin: "https://www.linkedin.com/in/lisa-florentina-616420396/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Michael Rossi",
