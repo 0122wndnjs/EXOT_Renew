@@ -39,6 +39,24 @@ const Roadmap = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C1A] via-[#E65C1C] to-[#DC3E1C] opacity-95"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08),_transparent_70%)]" />
 
+      <img
+        src="/images/roadmap_flow.png"
+        alt="Roadmap Flow Decoration"
+        className="
+          hidden md:block
+          absolute
+          bottom-[-40px]
+          left-[-60px]
+          w-[1050px]
+          opacity-20
+          invert
+          brightness-200
+          pointer-events-none
+          select-none
+          z-0
+        "
+      />
+
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
         <div className="md:w-1/3 text-center md:text-left flex flex-col justify-start">
           <h2 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#fff5e0] to-[#ffe2a0] drop-shadow-[0_0_25px_rgba(255,220,120,0.4)] mb-4">
@@ -67,10 +85,8 @@ const Roadmap = () => {
                 viewport={{ once: true }}
                 className="relative pl-12"
               >
-                {/* 타임라인 포인트 */}
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-5 rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 z-10"></div>
 
-                {/* ✅ 노란 계열 카드 */}
                 <div className="
                   bg-gradient-to-br from-[#FFF4C2]/80 via-[#FFE08A]/70 to-[#FFCA61]/70
                   backdrop-blur-sm 
@@ -78,8 +94,6 @@ const Roadmap = () => {
                   rounded-2xl 
                   p-6 md:p-8 
                   shadow-[0_0_25px_rgba(255,220,150,0.25)]
-                  hover:shadow-[0_0_45px_rgba(255,230,160,0.55)]
-                  transition-all duration-500
                 ">
                   <h3 className="text-lg md:text-xl font-bold text-[#7a3b00] mb-1">
                     {phase.title}

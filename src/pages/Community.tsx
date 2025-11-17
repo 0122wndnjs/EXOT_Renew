@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { FaTelegramPlane, FaDiscord, FaMedium } from "react-icons/fa";
+import {
+  FaTelegramPlane,
+  FaDiscord,
+  FaMedium,
+  FaYoutube,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiLinktree } from "react-icons/si";
 
@@ -61,7 +66,9 @@ const Community = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="group block rounded-3xl bg-[#1f1200]/90 border border-orange-400/30 shadow-[0_0_40px_rgba(255,180,80,0.25)] hover:shadow-[0_0_90px_rgba(255,200,100,0.5)] hover:border-orange-400 hover:-translate-y-2 transition-all duration-500"
+          className="group block rounded-3xl bg-[#1f1200]/90 border border-orange-400/30 shadow-[0_0_40px_rgba(255,180,80,0.25)] 
+                     hover:shadow-[0_0_90px_rgba(255,200,100,0.5)] hover:border-orange-400 hover:-translate-y-2 
+                     transition-all duration-500"
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-10 p-14">
             <motion.div
@@ -82,21 +89,17 @@ const Community = () => {
             </div>
 
             <motion.span
-              whileHover={{
-                backgroundPosition: "200% center",
-                scale: 1.08,
-              }}
+              whileHover={{ backgroundPosition: "200% center", scale: 1.08 }}
               transition={{ duration: 0.4 }}
               className="inline-block px-8 py-4 rounded-full font-semibold text-black 
-                 bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-400 
-                 bg-[length:200%_auto] text-lg transition-all"
+                         bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-400 
+                         bg-[length:200%_auto] text-lg transition-all"
             >
               Open →
             </motion.span>
           </div>
         </motion.a>
 
-        {/* ✅ Telegram (합쳐진 단일 카드) */}
         <div className="mt-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -109,7 +112,6 @@ const Community = () => {
                        transition-all duration-500"
           >
             <div className="flex flex-col md:flex-row items-center gap-12">
-              {/* Icon */}
               <motion.div
                 whileHover={{ rotate: 6, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 220 }}
@@ -118,7 +120,6 @@ const Community = () => {
                 <FaTelegramPlane className="text-5xl text-[#2AABEE]" />
               </motion.div>
 
-              {/* Text */}
               <div className="flex-1 text-center md:text-left">
                 <h4 className="text-3xl md:text-4xl font-bold text-orange-300">
                   Telegram Channels
@@ -128,7 +129,6 @@ const Community = () => {
                 </p>
               </div>
 
-              {/* Buttons */}
               <div className="flex flex-col gap-4">
                 <motion.a
                   href={telegramCommunityUrl}
@@ -139,7 +139,7 @@ const Community = () => {
                     scale: 1.06,
                   }}
                   transition={{ duration: 0.4 }}
-                  className="px-8 py-3 rounded-full font-semibold text-black text-lg
+                  className="px-8 py-3 rounded-full font-semibold text-black text-lg 
                              bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-400 
                              bg-[length:200%_auto] transition-all text-center"
                 >
@@ -155,7 +155,7 @@ const Community = () => {
                     scale: 1.06,
                   }}
                   transition={{ duration: 0.4 }}
-                  className="px-8 py-3 rounded-full font-semibold text-black text-lg
+                  className="px-8 py-3 rounded-full font-semibold text-black text-lg 
                              bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-400 
                              bg-[length:200%_auto] transition-all text-center"
                 >
@@ -213,6 +213,52 @@ const Community = () => {
               </div>
             </motion.a>
           ))}
+        </div>
+
+        <div className="mt-16">
+          <motion.a
+            href="https://www.youtube.com/@projectexot"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="group block rounded-3xl bg-[#1f1200]/90 border border-orange-400/30 
+                       p-14 shadow-[0_0_40px_rgba(255,180,80,0.25)] 
+                       hover:border-orange-400 hover:shadow-[0_0_90px_rgba(255,200,100,0.45)] 
+                       hover:-translate-y-2 transition-all duration-500"
+          >
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+              <motion.div
+                whileHover={{ rotate: 6, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 220 }}
+                className="flex items-center justify-center w-24 h-24 rounded-2xl bg-[#330000]"
+              >
+                <FaYoutube className="text-red-600 w-14 h-14" />
+              </motion.div>
+
+              <div className="flex-1 text-center md:text-left">
+                <h4 className="text-3xl md:text-4xl font-bold text-orange-300">
+                  Official YouTube
+                </h4>
+                <p className="text-white/70 mt-3 text-lg max-w-xl mx-auto md:mx-0">
+                  Watch EXOT project insights, AMAs, and biotech investment
+                  breakdowns.
+                </p>
+              </div>
+
+              <motion.span
+                whileHover={{ backgroundPosition: "200% center", scale: 1.08 }}
+                transition={{ duration: 0.4 }}
+                className="inline-block px-8 py-4 rounded-full font-semibold text-black 
+                           bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-400 
+                           bg-[length:200%_auto] text-lg transition-all"
+              >
+                Visit Channel →
+              </motion.span>
+            </div>
+          </motion.a>
         </div>
       </div>
     </section>

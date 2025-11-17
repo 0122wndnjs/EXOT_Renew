@@ -3,6 +3,35 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
+const renderLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+}: any) => {
+  const RADIAN = Math.PI / 180;
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.7;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="#fff"
+      textAnchor="middle"
+      dominantBaseline="central"
+      fontSize="15"
+      fontWeight="bold"
+      style={{ textShadow: "0 0 6px rgba(0,0,0,0.6)" }}
+    >
+      {(percent * 100).toFixed(1)}%
+    </text>
+  );
+};
+
 const Token = () => {
   const data = [
     { name: "Team", value: 10, color: "#f97316" },
@@ -62,13 +91,10 @@ const Token = () => {
       ref={ref}
       className="relative w-full text-white py-24 px-6 overflow-hidden"
     >
-      {/* 배경 */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C1A] via-[#E65C1C] to-[#DC3E1C] opacity-95"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08),_transparent_70%)]" />
 
-      {/* 내용 */}
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16">
-        {/* === LEFT === */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -90,8 +116,7 @@ const Token = () => {
               Binance Smart Chain (BSC)
             </p>
 
-            {/* ✅ Contract + Copy */}
-<p className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
+            <p className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
               <span className="text-yellow-200 font-semibold">Contract:</span>
               <span
                 onClick={copyContract}
@@ -117,7 +142,6 @@ const Token = () => {
             </p>
           </div>
 
-          {/* ✅ 숫자 애니메이션 */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -132,7 +156,6 @@ const Token = () => {
           </motion.div>
         </motion.div>
 
-        {/* === RIGHT === */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -157,6 +180,8 @@ const Token = () => {
                   dataKey="value"
                   stroke="none"
                   isAnimationActive={false}
+                  label={renderLabel}
+                  labelLine={false}
                 >
                   {data.map((entry, index) => (
                     <Cell

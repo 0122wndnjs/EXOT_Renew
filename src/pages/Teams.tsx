@@ -7,7 +7,7 @@ const Teams = () => {
       name: "Hakan K",
       role: "CEO",
       image: "/images/team/hakan.jpg",
-      linkedin: "https://www.linkedin.com/in/hakan-kim-066999396/",
+      linkedin: "https://www.linkedin.com/in/hakan-k-066999396/",
     },
     {
       name: "Toni Hyun",
@@ -21,7 +21,7 @@ const Teams = () => {
       role: "CTO",
       image: "/images/team/ethan.jpg",
       linkedin:
-        "https://www.linkedin.com/in/ethan-cole-927802394?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "https://www.linkedin.com/in/ethan-cole-4a79bb391/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Aisha Rahman",
@@ -33,7 +33,7 @@ const Teams = () => {
       name: "David Liu",
       role: "Lead Smart Contract Engineer",
       image: "/images/team/david.jpg",
-      linkedin: "https://www.linkedin.com/in/aisha-rahman-0887b4394",
+      linkedin: "https://www.linkedin.com/in/david-liu-6686b7390/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Sofia Martins",
@@ -52,7 +52,7 @@ const Teams = () => {
       name: "Nora Kim",
       role: "Product Development Manager",
       image: "/images/team/nora.jpg",
-      linkedin: "https://www.linkedin.com/in/nora-kim-323b80394",
+      linkedin: "https://www.linkedin.com/in/nora-kim-74288b398/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Kenji Ito",
@@ -64,7 +64,7 @@ const Teams = () => {
       name: "Emma Blake",
       role: "Public Relations & Community Manager",
       image: "/images/team/emma.jpg",
-      linkedin: "https://it.linkedin.com/in/emma-black-9b8807394",
+      linkedin: "https://www.linkedin.com/in/emma-blake-41b006399/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
   ];
 
@@ -84,14 +84,14 @@ const Teams = () => {
     {
       name: "Michael Rossi",
       role: "Financial & Compliance Advisor",
-      image: "/images/user.jpg",
-      linkedin: "https://www.linkedin.com/in/michael-rossi-72855b390",
+      image: "/images/team/michael.png",
+      linkedin: "https://www.linkedin.com/in/michael-rossi-59b27b399/?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     },
     {
       name: "Hana Sato",
       role: "Brand & PR Advisor",
-      image: "/images/user.jpg",
-      linkedin: "https://www.linkedin.com/in/hana-sato-b44962394",
+      image: "/images/team/hana.png",
+      linkedin: "https://www.linkedin.com/in/hana-sato-437144399/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
   ];
 
@@ -128,10 +128,8 @@ const Teams = () => {
 
   return (
     <section className="relative w-full bg-[#120a00] text-white py-24 px-6 overflow-hidden">
-      {/* 배경 */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a0f00] via-[#2c1400] to-[#120a00] opacity-90"></div>
 
-      {/* 제목 */}
       <div className="relative z-10 text-center mb-16">
         <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400 drop-shadow-[0_0_20px_rgba(255,150,50,0.3)] mb-4">
           Meet Our Team
@@ -230,7 +228,6 @@ const Teams = () => {
               transition={{ delay: i * 0.1, duration: 0.6 }}
               className="flex flex-col items-center text-center"
             >
-              {/* 로고 */}
               <div className="w-28 h-28 mb-4 flex items-center justify-center">
                 <img
                   src={partner.logo}
@@ -239,7 +236,6 @@ const Teams = () => {
                 />
               </div>
 
-              {/* 이름 / 분야 / 설명 */}
               <h4 className="text-lg font-bold text-orange-300 mb-1">
                 {partner.name}
               </h4>
