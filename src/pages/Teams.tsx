@@ -57,14 +57,14 @@ const Teams = () => {
     {
       name: "Kenji Ito",
       role: "Partnership & Operations Manager",
-      image: "/images/team/kenji.jpeg",
+      image: "/images/team/kenji.jpg",
       linkedin: "https://www.linkedin.com/in/kenji-lito-567224324",
     },
     {
       name: "Emma Blake",
       role: "Public Relations & Community Manager",
-      image: "/images/team/emma.jpg",
-      linkedin: "https://www.linkedin.com/in/emma-blake-41b006399/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      image: "/images/team/emma.png",
+      linkedin: "https://www.linkedin.com/in/emma-blake-0952a3392/",
     },
   ];
 
