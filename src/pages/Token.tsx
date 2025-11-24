@@ -45,7 +45,7 @@ const Token = () => {
     { name: "Community & Liquidity", value: 7.5, color: "#ef4444" },
   ];
 
-  const totalSupply = 1_000_000_000;
+  const totalSupply = 10_000_000_000;
   const ref = useRef(null);
   const inView = useInView(ref);
   const [count, setCount] = useState(0);
