@@ -96,7 +96,7 @@ const WhatIsExot = () => {
             className="w-full aspect-video bg-black/40 rounded-2xl overflow-hidden border border-yellow-300/30 shadow-[0_0_25px_rgba(255,200,120,0.2)]"
           >
             <iframe
-              src="https://www.youtube-nocookie.com/embed/_Jg6AVNqh1U?rel=0"
+              src="https://www.youtube.com/embed/MTdM8eEL74I?si=c5fif95drFqSfQin"
               title="EXOT Introduction"
               allowFullScreen
               className="w-full h-full"
