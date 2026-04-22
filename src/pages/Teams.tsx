@@ -26,7 +26,7 @@ const Teams = () => {
     {
       name: "Aisha Rahman",
       role: "Head of Bio Research Integration",
-      image: "/images/team/aisha.jpeg",
+      image: "/images/team/aisha.jpg",
       linkedin: "https://www.linkedin.com/in/aisha-rahman-0887b4394",
     },
     {
@@ -63,7 +63,7 @@ const Teams = () => {
     {
       name: "Emma Blake",
       role: "Public Relations & Community Manager",
-      image: "/images/team/emma.png",
+      image: "/images/team/emma.jpg",
       linkedin: "https://www.linkedin.com/in/emma-blake-0952a3392/",
     },
   ];
